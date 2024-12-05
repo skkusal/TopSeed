@@ -18,7 +18,7 @@ $ python3 topseed.py program_configs/diffutils.json 3600 1 --eta_time=120
 Each argument of the command indicates:
 * program_configs/diffutils.json : description of the benchmark for testing the program
 * 3600 : the total testing budget(sec)
-* 1 : the prefix number of the experiment (the directory would be set as 'topseed/#1experiment')
+* 1 : the prefix number of the experiment (the directory would be set as 'topseed/experiments_exp_{benchmark}/#1experiment')
 * --eta_time=120 : the small time budget (hyperparameter $\eta_{time}$ in Algorithm 3)
 
 If you want to conduct experiments of BASE (without our seeding approach), you can run the following commands.
@@ -26,10 +26,10 @@ If you want to conduct experiments of BASE (without our seeding approach), you c
 $ python3 base.py program_configs/diffutils.json 3600 1 --eta_time=120
 ```
 
-After executing experiments, the results are stored in 'topseed/#{1}experiment/' with the name of '{benchmark}\_{1}\_result.coverage', '{benchmark}\_{1}\_result.err.log'.
+After executing experiments, the results are stored in 'topseed/experiments_exp_{benchmark}/#{1}experiment/' with the name of '{benchmark}\_{1}\_result.coverage', '{benchmark}\_{1}\_result.err.log'.
 
 Furthermore, if you want to assess the test cases generated during each iteration, you can access all generated data with following path:
-* './topseed/#{1}experiment/iteration_\*/klee-out-0/\*.ktest' files
+* './topseed/experiments_exp_{benchmark}/#{1}experiment/iteration_\*/klee-out-0/\*.ktest' files
 
 
 # Check the results of experiments
