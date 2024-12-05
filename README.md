@@ -10,7 +10,15 @@ $ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed
 ```
 
 # How to execute our approach
+## Benchmarks
+In our docker image, we already provided 17 open-source C programs covered in evaluation of our paper. All benchmarks we used are installed in '/root/topseed/benchmarks', and described in '/root/topseed/program_configs' as well.
+```bash
+$ ls /root/topseed/program_configs
+'[.json'   combine.json   csplit.json   dd.json   diffutils.json   expr.json   factor.json   gawk.json   ginstall.json   grep.json
+ln.json   od.json   patch.json   pr.json   sqlite.json   tr.json   trueprint.json
+```
 
+## Running TopSeed
 For executing TopSeed, you can run experiment by following command in the '~/topseed' directory.
 ```bash
 $ python3 topseed.py program_configs/diffutils.json 3600 1 --eta_time=120
