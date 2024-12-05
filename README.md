@@ -2,11 +2,11 @@
 Topseed is a new technique that selects the most promising seeds for improving the symbolic execution with learning-based approach.
 
 # Installation
-We would like to introduce Docker image for fast installation. You can just install TopSeed by following these instructions.
+We would like to introduce Docker image for fast installation. You can just install TopSeed by following these instructions (We provided direct dockerfile(https://github.com/skkusal/TopSeed/blob/main/Dockerfile) as well).
 
 ```bash
-$ docker build -t topseed/icse2025 .
-$ docker run -it topseed/icse2025
+$ docker pull skkusal/topseed
+$ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed
 ```
 
 # How to execute our approach
