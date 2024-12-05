@@ -1,0 +1,11 @@
+{
+    "pgm_name": "od",
+    "pgm_dir": "./benchmarks/coreutils-8.31/obj-llvm/",
+    "exec_dir": "/src",
+    "gcov_dir": "/src",
+    "gcov_path": "./benchmarks/coreutils-8.31/obj-gcov",
+    "gcov_file": "../*/*.gcov",
+    "gcda_file": "../*/*.gcda",
+    "sym_args": "--sym-args 0 3 10 --sym-files 2 12 --sym-stdin 12 --sym-stdout"
+    }
+    
