@@ -31,13 +31,13 @@ Each argument of the command indicates:
 
 If you want to conduct experiments of BASE (without our seeding approach), you can run the following commands.
 ```bash
-$ python3 base.py program_configs/diffutils.json 3600 1 --eta_time=120
+$ python3 base.py program_configs/diffutils.json 3600 2 --eta_time=120
 ```
 
 After executing experiments, the results are stored in 'topseed/experiments_exp_{benchmark}/#{1}experiment/' with the name of '{benchmark}\_{1}\_result.coverage', '{benchmark}\_{1}\_result.err.log'.
 
 Furthermore, if you want to assess the test cases generated during each iteration, you can access all generated data with following path:
-* './topseed/experiments_exp_{benchmark}/#{1}experiment/iteration_\*/klee-out-0/\*.ktest' files
+* './topseed/experiments_exp_{benchmark}/#{2}experiment/iteration_\*/klee-out-0/\*.ktest' files
 
 
 # Check the results of experiments
