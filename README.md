@@ -41,12 +41,11 @@ Furthermore, if you want to assess the test cases generated during each iteratio
 
 
 # Check the results of experiments
-To check the branch coverage and bug from the results of experiments, you can easily analyze all results using following command:
+To check the branch coverage and bug from the results of experiments, you can easily analyze all results using the following command. In this case, the numbers {1} and {2} describe the indexes of experiments mentioned in 'Running TopSeed' section. You can simply find out the improvements of performance with TopSeed(index : {1}) opposed to the base KLEE(index : {2}). 
 ```bash
 $ python3 analysis.py diff
-# Set the iteration numbers of data : {index1} {index2} {index3}
+# Set the iteration numbers of data : {1} {2}
                                                 Coverage
-The coverage results of #{index1}experiment:      824
-The coverage results of #{index2}experiment:      876        
-The coverage results of #{index3}experiment:      990
+The coverage results of #{1}experiment:      824
+The coverage results of #{2}experiment:      876        
 ```
