@@ -45,7 +45,7 @@ To check the branch coverage and bug from the results of experiments, you can ea
 ```bash
 $ python3 analysis.py diff
 # Set the iteration numbers of data : {1} {2}
-                                                Coverage
+                                            Coverage
 The coverage results of #{1}experiment:      1258.0
 The coverage results of #{2}experiment:      924.0        
 ```
