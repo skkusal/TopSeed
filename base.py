@@ -75,7 +75,7 @@ if __name__ == "__main__":
     configs['top_dir'] = os.path.abspath("./experiments_exp_" + pgm + "/#" + str(ith_trial) + "experiment/")
     iterN = run_base(pconfig, pgm, total_budget, ith_trial)
 
-    klee_replay_cmd = " ".join(["python", "kleereplay.py", args.program_config, ith_trial, f"{pgm}_{ith_trial}_result"])
+    klee_replay_cmd = " ".join(["python3", "kleereplay.py", args.program_config, ith_trial, f"{pgm}_{ith_trial}_result"])
     os.system(klee_replay_cmd) 
 
     log_files = glob.glob(f"{pgm}_{ith_trial}_result.coverage")
