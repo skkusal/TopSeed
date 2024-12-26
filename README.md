@@ -1,8 +1,8 @@
 # TopSeed
-Topseed is a new technique that selects the most promising seeds for improving the symbolic execution with learning-based approach.
+Topseed is a novel technique designed to enhance symbolic execution by selecting the most promising seeds without prior knowledge using a learning-based approach.
 
 # Installation
-We would like to introduce Docker image for fast installation. You can just install TopSeed by following these instructions (We provided direct [dockerfile](https://github.com/skkusal/TopSeed/blob/main/Dockerfile) as well).
+We would like to introduce a Docker image for fast and easy installation. You can install TopSeed by following these instructions. (We also provided a direct [dockerfile](https://github.com/skkusal/TopSeed/blob/main/Dockerfile) for your convenience.)
 
 ```bash
 $ docker pull skkusal/topseed
@@ -11,7 +11,7 @@ $ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed
 
 # How to execute our approach
 ## Benchmarks
-In our docker image, we already provided 17 open-source C programs covered in evaluation of our paper. All benchmarks we used are installed in '/root/topseed/benchmarks', and described in '/root/topseed/program_configs' as well.
+Our docker image included 17 open-source C programs that were used for the evaluation in our paper. All benchmarks are installed in '/root/topseed/benchmarks', and described in '/root/topseed/program_configs' as well.
 ```bash
 $ ls /root/topseed/program_configs
 '[.json'   combine.json   csplit.json   dd.json   diffutils.json   expr.json   factor.json   gawk.json   ginstall.json   grep.json
@@ -19,29 +19,29 @@ ln.json   od.json   patch.json   pr.json   sqlite.json   tr.json   trueprint.jso
 ```
 
 ## Running TopSeed
-For executing TopSeed, you can run experiment by following command in the '~/topseed' directory.
+To execute TopSeed, you can run the experiment using the following command in the '~/topseed' directory.
 ```bash
 $ python3 topseed.py program_configs/diffutils.json 3600 1 --eta_time=120
 ```
 Each argument of the command indicates:
-* program_configs/diffutils.json : description of the benchmark for testing the program
-* 3600 : the total testing budget(sec)
-* 1 : the prefix number of the experiment (the directory would be set as 'topseed/experiments_exp_{benchmark}/#1experiment')
-* --eta_time=120 : the small time budget (hyperparameter $\eta_{time}$ in Algorithm 3)
+* program_configs/diffutils.json : Description of the benchmark for testing the program
+* 3600 : The total testing budget(sec)
+* 1 : The prefix number of the experiment (the directory will be created as 'topseed/experiments_exp_{benchmark}/#1experiment')
+* --eta_time=120 : The small time budget (hyperparameter $\eta_{time}$ in Algorithm 3)
 
-If you want to conduct experiments of BASE (without our seeding approach), you can run the following commands.
+If you want to conduct experiments with BASE (without our seeding approach), you can run the following commands.
 ```bash
 $ python3 base.py program_configs/diffutils.json 3600 2 --eta_time=120
 ```
 
-After executing experiments, the results are stored in 'topseed/experiments_exp_{benchmark}/#{1}experiment/' with the name of '{benchmark}\_{1}\_result.coverage', '{benchmark}\_{1}\_result.err.log'.
+After executing the experiments, the results will be stored in 'topseed/experiments_exp_{benchmark}/#{1}experiment/' with the file names of '{benchmark}\_{1}\_result.coverage' and '{benchmark}\_{1}\_result.err.log'.
 
-Furthermore, if you want to assess the test cases generated during each iteration, you can access all generated data with following path:
+Additionally, if you want to assess the test cases generated during each iteration, you can access all generated data with following path:
 * './topseed/experiments_exp_{benchmark}/#{2}experiment/iteration_\*/klee-out-0/\*.ktest' files
 
 
 # Check the results of experiments
-To check the branch coverage and bug from the results of experiments, you can easily analyze all results using the following command. In this case, the numbers {1} and {2} describe the indexes of experiments mentioned in 'Running TopSeed' section. You can simply find out the improvements of performance with TopSeed(index : {1}) opposed to the base KLEE(index : {2}). 
+To evaluate branch coverage and bugs from the experiment results, you can easily analyze all outputs using the following command. The numbers {1} and {2} represent the experiment indexes mentioned in the 'Running TopSeed' section. This allows you to conveniently compare the performance improvements of TopSeed (index : {1}) against to the base KLEE (index : {2}). 
 ```bash
 $ python3 analysis.py diff
 # Set the iteration numbers of data : {1} {2}
