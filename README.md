@@ -9,6 +9,11 @@ $ docker pull skkusal/topseed
 $ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed
 ```
 
+# Requirement
+As we explained in section 'Installation', we provided a docker image with all requirements at [skkusal/topseed](https://hub.docker.com/r/skkusal/topseed). So, you can run TopSeed with the [docker](https://www.docker.com/) image on your device.
+
+Our experiments were conducted on a single Linux machine powered by two Intel Xeon Gold 6230R processors with 256GB RAM. Therefore, the experimental results may differ depending on your own machine.
+
 # How to execute our approach
 ## Benchmarks
 Our docker image included 17 open-source C programs that were used for the evaluation in our paper. All benchmarks are installed in '/root/topseed/benchmarks', and described in '/root/topseed/program_configs' as well.
@@ -49,3 +54,9 @@ $ python3 analysis.py diff
 The coverage results of #{1}experiment:      1258.0
 The coverage results of #{2}experiment:      924.0        
 ```
+
+# Status
+We are applying for the three badges: Available, Reusalbe, and Functional badges.
+- The DOI link is as: (https://doi,.org/). Our artifact is available on the public repository at (https://github.com/skkusal/topseed).
+- We have provided all 17 benchmark programs used in the evaluation and helpful scripts for guiding the reproducement of the main experimental results of paper.
+- We also have included the devcontainer settings with all requirements pre-installed. It allows other researchers easily to implement their own idea based on our tool in their research.
