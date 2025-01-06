@@ -57,6 +57,6 @@ The coverage results of #{2}experiment:      924.0
 
 # Status
 We are applying for the three badges: Available, Reusalbe, and Functional badges.
-- The DOI link is as: (https://doi,.org/). Our artifact is available on the public repository at (https://github.com/skkusal/topseed).
+- The DOI link is as: https://zenodo.org/records/14602979. Our artifact is available on the public repository at https://github.com/skkusal/topseed.
 - We have provided all 17 benchmark programs used in the evaluation and helpful scripts for guiding the reproducement of the main experimental results of paper.
 - We also have included the devcontainer settings with all requirements pre-installed. It allows other researchers easily to implement their own idea based on our tool in their research.
