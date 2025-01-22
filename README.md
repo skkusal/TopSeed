@@ -1,5 +1,5 @@
 # TopSeed
-Topseed is a novel technique designed to enhance symbolic execution by selecting the most promising seeds without prior knowledge using a learning-based approach. Our paper of accepted version is located in this repository, [TopSeed.pdf](https://github.com/skkusal/TopSeed/blob/main/accepted_paper_ICSE2025_TopSeed.pdf).
+Topseed is a novel technique designed to enhance symbolic execution by selecting the most promising seeds without prior knowledge using a learning-based approach. Our paper is available in this repository, [TopSeed.pdf](https://github.com/skkusal/TopSeed/blob/main/accepted_paper_ICSE2025_TopSeed.pdf).
 
 # Installation
 We would like to introduce a Docker image for fast and easy installation. You can install TopSeed by following these instructions. (We also provided a direct [dockerfile](https://github.com/skkusal/TopSeed/blob/main/Dockerfile) for your convenience.)
