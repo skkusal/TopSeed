@@ -5,8 +5,8 @@ Topseed is a novel technique designed to enhance symbolic execution by selecting
 We would like to introduce a Docker image for fast and easy installation. You can install TopSeed by following these instructions. (We also provided a direct [dockerfile](https://github.com/skkusal/TopSeed/blob/main/Dockerfile) for your convenience.)
 
 ```bash
-$ docker pull skkusal/topseed
-$ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed
+$ docker pull skkusal/topseed:v2
+$ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed:v2
 ```
 
 # Requirement
