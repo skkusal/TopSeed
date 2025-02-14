@@ -73,38 +73,41 @@ if __name__ == "__main__":
     eta_time = args.eta_time
 
     configs['top_dir'] = os.path.abspath("./experiments_exp_" + pgm + "/#" + str(ith_trial) + "experiment/")
-    iterN = run_base(pconfig, pgm, total_budget, ith_trial)
-
-    klee_replay_cmd = " ".join(["python3", "kleereplay.py", args.program_config, ith_trial, f"{pgm}_{ith_trial}_result"])
-    os.system(klee_replay_cmd) 
-
-    log_files = glob.glob(f"{pgm}_{ith_trial}_result.coverage")
-    for log_file in log_files:
-        log_mv_cmd = " ".join(["mv", log_file, configs["top_dir"]])
-        os.system(log_mv_cmd)
-
-    err_files = glob.glob(f"{pgm}_{ith_trial}_result.err.log")
-    for err_file in err_files:
-        err_mv_cmd = " ".join(["mv", err_file, configs["top_dir"]])
-        os.system(err_mv_cmd)
-
-    print("====================================\tExperiment Terminated\t====================================")
-    print("[Warning] The prgoram tries to eliminate all the ktest files for the optimization of storage.")
-    print("[Warning] Please check whether all the experiments are ended.")
-    print("[Warning] The experiments can be terminated.")
-    print()
-    finalCheck = int(input("IS IT OKAY TO REMOVE ALL TEST CASES? [0 : False, 1 : True] : "))
-    print("====================================\tExperiment Terminated\t====================================")
-
-    if finalCheck:
-        for i in range(1, iterN + 1):
-            iterDir = configs["top_dir"] + f"/iteration_{i}/" + pconfig["pgm_name"]
-            rm_cmd = " ".join(["rm", "-rf", iterDir])
-            os.system(rm_cmd)
-
-        iterDirs = [configs["top_dir"] + "/" + x for x in os.listdir(configs["top_dir"]) if "iteration_" in x]
-        for each in iterDirs:
-            rm_cmd = " ".join(["rm", "-rf", each])
-            os.system(rm_cmd)
+    if check_directory(ith_trail):
+        print(f"#{ith_trial}experiment directory is already existing, so you have to remove the directory first.")
     else:
-        print("You selected the option to remain all test cases!")
+        iterN = run_base(pconfig, pgm, total_budget, ith_trial)
+
+        klee_replay_cmd = " ".join(["python3", "kleereplay.py", args.program_config, ith_trial, f"{pgm}_{ith_trial}_result"])
+        os.system(klee_replay_cmd) 
+
+        log_files = glob.glob(f"{pgm}_{ith_trial}_result.coverage")
+        for log_file in log_files:
+            log_mv_cmd = " ".join(["mv", log_file, configs["top_dir"]])
+            os.system(log_mv_cmd)
+
+        err_files = glob.glob(f"{pgm}_{ith_trial}_result.err.log")
+        for err_file in err_files:
+            err_mv_cmd = " ".join(["mv", err_file, configs["top_dir"]])
+            os.system(err_mv_cmd)
+
+        print("====================================\tExperiment Terminated\t====================================")
+        print("[Warning] The prgoram tries to eliminate all the ktest files for the optimization of storage.")
+        print("[Warning] Please check whether all the experiments are ended.")
+        print("[Warning] The experiments can be terminated.")
+        print()
+        finalCheck = int(input("IS IT OKAY TO REMOVE ALL TEST CASES? [0 : False, 1 : True] : "))
+        print("====================================\tExperiment Terminated\t====================================")
+
+        if finalCheck:
+            for i in range(1, iterN + 1):
+                iterDir = configs["top_dir"] + f"/iteration_{i}/" + pconfig["pgm_name"]
+                rm_cmd = " ".join(["rm", "-rf", iterDir])
+                os.system(rm_cmd)
+
+            iterDirs = [configs["top_dir"] + "/" + x for x in os.listdir(configs["top_dir"]) if "iteration_" in x]
+            for each in iterDirs:
+                rm_cmd = " ".join(["rm", "-rf", each])
+                os.system(rm_cmd)
+        else:
+            print("You selected the option to remain all test cases!")
