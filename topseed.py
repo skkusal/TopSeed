@@ -149,7 +149,7 @@ if __name__ == "__main__":
 
     configs['top_dir'] = os.path.abspath("./experiments_exp_" + pgm + "/#" + str(ith_trial) + "experiment/")
     if check_directory(ith_trial):
-        print(f"#{ith_trial}experiment directory is already existing, so you have to remove the directory first.")
+        print(f"#{ith_trial}experiment directory is already existing, so you have to remove the directory first or use a different prefix number.")
     else:
         iterN = run_topseed(pconfig, pgm, total_budget, ith_trial)
 
