@@ -1,9 +1,10 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 ARG BASE_DIR=/root/topseed
 ARG SOURCE_DIR=/root/topseed/
 
 EXPOSE 2024
+
 # install requirements
 RUN apt-get update && \
     apt-get install -y gdb && \
@@ -58,7 +59,8 @@ RUN make -j
 # install klee
 ADD ./ ${BASE_DIR}
 WORKDIR ${BASE_DIR}/klee
-RUN echo "export LLVM_COMPILER=clang" >> /root/.bashrc
+ENV LLVM_COMPILER=clang
+ENV FORCE_UNSAFE_CONFIGURE=1
 RUN mkdir build
 WORKDIR ${BASE_DIR}/klee/build
 RUN ls /root/topseed
@@ -68,8 +70,9 @@ WORKDIR ${BASE_DIR}/klee
 RUN env -i /bin/bash -c '(source testing-env.sh; env > test.env)'
 
 # build benchmarks
-RUN export FORCE_UNSAFE_CONFIGURE=1
 WORKDIR ${BASE_DIR}/benchmarks
 RUN ls ${BASE_DIR}/benchmarks
-RUN bash ./build_benchmarks.sh
+RUN chmod +x build_benchmarks.sh
+RUN ./build_benchmarks.sh
+
 WORKDIR ${BASE_DIR}

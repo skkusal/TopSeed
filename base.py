@@ -26,7 +26,13 @@ def load_program_config(config_file):
     
     return parsed
 
-def run_base(pconfig, pgm, total_time, ith_trial,):
+def check_directory(ith_trial):
+    if os.path.exists(configs['top_dir']):
+        return True
+    else:
+        return False    
+
+def run_base(pconfig, pgm, total_time, ith_trial):
     global init_time
     global a_budget
     
@@ -73,7 +79,7 @@ if __name__ == "__main__":
     eta_time = args.eta_time
 
     configs['top_dir'] = os.path.abspath("./experiments_exp_" + pgm + "/#" + str(ith_trial) + "experiment/")
-    if check_directory(ith_trail):
+    if check_directory(ith_trial):
         print(f"#{ith_trial}experiment directory is already existing, so you have to remove the directory first or use a different prefix number.")
     else:
         iterN = run_base(pconfig, pgm, total_budget, ith_trial)
