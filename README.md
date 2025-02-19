@@ -17,6 +17,7 @@ Our experiments were conducted on a single Linux machine powered by two Intel Xe
 * LLVM version: 6.0
 * Python version: 3.8
 * STP version: 2.3.3
+* KLEE version: 2.1
 
 # How to execute our approach
 ## Benchmarks
