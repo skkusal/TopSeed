@@ -13,7 +13,7 @@ $ docker run --rm -it --ulimit='stack=-1:-1' skkusal/topseed:v2
 As we explained in section 'Installation', we provided a docker image with all requirements at [skkusal/topseed](https://hub.docker.com/r/skkusal/topseed). So, you can run TopSeed with the [docker](https://www.docker.com/) image on your device.
 
 Our experiments were conducted on a single Linux machine powered by two Intel Xeon Gold 6230R processors with 256GB RAM. Therefore, the experimental results may differ depending on your own machine. More detailed information about the experimental environment is as follows:
-* Ubuntu version: 18.04
+* Ubuntu version: 16.04
 * LLVM version: 6.0
 * Python version: 3.8
 * STP version: 2.3.3
